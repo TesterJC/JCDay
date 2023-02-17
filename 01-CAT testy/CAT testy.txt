@@ -17,4 +17,5 @@
 - Pred spustenim Cat commands v PowerShellu importuj Cat module - Import-Module CAT
 
 - Zadani testu je v souboru 'Zadani CAT testy.md' - otevri ve Visual Studio Code a zmackni ctrl + shift + v pro lepsi zobrazeni
+nebo na odkaze: https://github.com/TesterJC/JCDay/blob/main/01-CAT%20testy/Zadani%20CAT%20testy.md
 - Projekt, do ktereho mas psat testy se jmenuje 'JCDen.cat.yaml'
