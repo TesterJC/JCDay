@@ -14,3 +14,4 @@
 
 - vsechny soubory, ktere vytvoris a zmeny, ktere udelas, pushni do GitHub repozitare
 https://github.com/TesterJC/JCDay
+- nepushuj je ale do 'main' branche, vytvor si vlastni branch s tvym jmenem
