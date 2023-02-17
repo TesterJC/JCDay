@@ -1,0 +1,13 @@
+
+───░█ ░█▀▀█ 　 ░█▀▀▄ ░█▀▀▀ ░█▄─░█ 
+─▄─░█ ░█─── 　 ░█─░█ ░█▀▀▀ ░█░█░█ 
+░█▄▄█ ░█▄▄█ 　 ░█▄▄▀ ░█▄▄▄ ░█──▀█
+
+Ahoj!
+
+Mame pro tebe pripravenych par ukolu. Nemusis zvladnout vsechno 100 %, cenime snahu. :)
+Nejprve si vyzkousis napsat par testu v nasem novem testovacim nastroji CAT, 
+pak vse jen ulozis do repozitare v Gitu, zareportujes bugy a odprezentujes nam to.
+
+Mas kolik casu budes chtit a urcite se ptej kohokoli, pokud si nebudes s necim vedet rady.
+CATu nejvic rozumi Helca, Tereza nebo Petr. SQL, Gitu a ostatnim vecem tu rozumi vsichni. :)

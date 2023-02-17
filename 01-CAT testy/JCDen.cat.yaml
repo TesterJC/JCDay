@@ -1,0 +1,34 @@
+﻿Data Sources:
+  # put your connection string here
+- Provider: SqlServer@1 
+  Connection string: Data Source=sql-qalab.database.windows.net;Uid=tester;Pwd=Superstar68;Initial Catalog=AdventureWorks2019;
+  Name: AW
+- Provider: SqlServer@1 
+  Connection string: Data Source=sql-qalab.database.windows.net;Uid=tester;Pwd=Superstar68;Initial Catalog=AdventureWorksDW2019;
+  Name: AWDW
+
+# let's write your tests
+Tests:
+- Name: Sales.SalesOrderHeader x dbo.FactInternetSales
+  Description: Count of rows
+  First Data Source: AW
+  First Query: |
+      SELECT COUNT(*) 
+      FROM [Sales].[SalesOrderHeader] H
+      JOIN Sales.SalesOrderDetail D
+      ON D.SalesOrderID = H.SalesOrderID
+      WHERE OnlineOrderFlag = 1
+  Second Data Source: AWDW
+  Second Query: |
+    SELECT COUNT(*) FROM [dbo].[FactInternetSales]
+  Expectation: SetsMatch
+#--------------------------------------------------------------------------------#
+-   Name: Sales.CreditCard
+    Description: Len of Card Number   
+    First Data Source: AW
+    First Query: >
+      SELECT CardNumber FROM [Sales].[CreditCard]
+      WHERE LEN(CardNumber) <> 14
+    Expectation: SetIsEmpty
+    
+#--------------------------------------------------------------------------------#
