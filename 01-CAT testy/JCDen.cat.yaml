@@ -9,7 +9,10 @@
 
 # let's write your tests
 Tests:
-- Name: Sales.SalesOrderHeader x dbo.FactInternetSales
+- TestSuite: Integration test
+  Order: 1
+  TestCase: Sales.SalesOrderHeader x dbo.FactInternetSales
+  Name: Sales.SalesOrderHeader x dbo.FactInternetSales
   Description: Count of rows
   First Data Source: AW
   First Query: |
@@ -23,12 +26,123 @@ Tests:
     SELECT COUNT(*) FROM [dbo].[FactInternetSales]
   Expectation: SetsMatch
 #--------------------------------------------------------------------------------#
--   Name: Sales.CreditCard
-    Description: Len of Card Number   
-    First Data Source: AW
-    First Query: >
+- TestSuite: Smoke test
+  Order: 2
+  TestCase: Sales.CreditCard
+  Name: Sales.CreditCard
+  Description: Len of Card Number   
+  First Data Source: AW
+  First Query: >
       SELECT CardNumber FROM [Sales].[CreditCard]
       WHERE LEN(CardNumber) <> 14
-    Expectation: SetIsEmpty
-    
+  Expectation: SetIsEmpty
+  #--------------------------------------------------------------------------------#
+- TestSuite: Smoke test
+  Order: 3
+  TestCase: Production.Product
+  Name: 0 and NULL values
+  Description:  column SafetyStockLevel must not contain 0 or NULL
+  First Data Source: AW
+  First Query: |
+      SELECT * 
+      FROM [Production].[Product]
+      WHERE SafetyStockLevel = 0 OR SafetyStockLevel IS NULL
+  Expectation: SetIsEmpty
 #--------------------------------------------------------------------------------#
+- TestSuite: Smoke test
+  Order: 4
+  TestCase: Production.Product
+  Name: equal values
+  Description:  value in column StandardCost must not be greater than value in column ListPrice
+  First Data Source: AW
+  First Query: |
+      SELECT StandardCost, ListPrice 
+      FROM [Production].[Product]
+      WHERE StandardCost > ListPrice
+  Expectation: SetIsEmpty
+#--------------------------------------------------------------------------------#
+- TestSuite: Smoke test
+  Order: 5
+  TestCase: Production.Product
+  Name: date not later than 1.1.2000
+  Description:  date in column SellStartDate must not be later than 1.1.2000
+  First Data Source: AW
+  First Query: |
+      SELECT * 
+      FROM [Production].[Product]
+      WHERE SellStartDate > 2000-01-01
+  Expectation: SetIsEmpty
+#--------------------------------------------------------------------------------#
+- TestSuite: Smoke test
+  Order: 6
+  TestCase: Production.Product
+  Name: values W, S, P in TransactionType  
+  Description:  value in column TransactionType must contain only values W, S, P
+  First Data Source: AW
+  First Query: |
+      SELECT * 
+      FROM [Production].[TransactionHistory]
+      WHERE TransactionType NOT IN ('W','S','P')
+  Expectation: SetIsEmpty
+#--------------------------------------------------------------------------------#
+- TestSuite: Integration test
+  Order: 7
+  TestCase: Production.Product x dbo.DimProduct
+  Name: equal value Name
+  Description: value Name in Product table must be equal as in DimProduct table  
+  First Data Source: AW
+  First Query: |
+      SELECT DISTINCT Name
+      FROM [Production].[Product] 
+      ORDER BY Name
+  Second Data Source: AWDW
+  Second Query: |
+      SELECT DISTINCT EnglishProductName Name
+      FROM [dbo].[DimProduct]
+      ORDER BY EnglishProductName
+  Expectation: SetsMatch
+#--------------------------------------------------------------------------------#
+# | Hodnoty Name v tabulce Product musí být 
+# stejné jako v tabulce DimProduct | [Production].[Product] | [dbo].[DimProduct] |  |  |
+#--------------------------------------------------------------------------------#
+
+- TestSuite: Integration test
+  Order: 8
+  TestCase: dbo.DimProduct x dbo.FactProductInventory
+  Name: each product has record
+  Description: each product from table DimProduct must have record in table FactProductInventory
+  First Data Source: AWDW
+  First Query: |
+      SELECT COUNT(ProductKey) 
+      FROM [dbo].[DimProduct]
+  Second Data Source: AWDW
+  Second Query: |
+     SELECT COUNT(DISTINCT ProductKey) 
+     FROM [dbo].[FactProductInventory]
+  Expectation: SetsMatch
+#--------------------------------------------------------------------------------#
+- TestSuite: Integration test
+  Order: 9
+  TestCase: Sales.SalesOrderHeader x dbo.FactInternetSales
+  Name: equal total sum
+  Description: Total sum of each product in table SalesOrderHeader equal to total sum in table FactInternetSales
+  First Data Source: AW
+  First Query: |
+      SELECT D.ProductID, SUM(LineTotal)  
+      FROM [Sales].[SalesOrderHeader] H
+      JOIN Sales.SalesOrderDetail D
+      ON D.SalesOrderID = H.SalesOrderID
+      GROUP BY D.ProductID
+      ORDER BY D.ProductID
+  Second Data Source: AWDW
+  Second Query: |
+    SELECT ProductKey, SUM(TotalProductCost) 
+    FROM [dbo].[FactInternetSales] 
+    GROUP BY ProductKey
+    ORDER BY ProductKey
+  Expectation: SetsMatch
+  #--------------------------------------------------------------------------------#
+Output: yaml
+#--------------------------------------------------------------------------------#
+# | Celková suma za každý produkt v tabulce SalesOrderHeader se musí rovnat celkové sumě 
+# v tabulce FactInternetSales | [Sales].[SalesOrderHeader] | [dbo].[FactInternetSales] | | |

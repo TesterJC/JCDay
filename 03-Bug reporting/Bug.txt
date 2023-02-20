@@ -15,3 +15,29 @@
 - urcite v databazi objevis nejaky bug. Vytvor soubor (nebo pouzij tento) a bug reportuj dalsim clenum tymu.
 - vetsinou se tim budou zabyvat developeri, tak jim podle uvazeni popis, co se stalo. 
 - obrazky sem nejdou vkladat, ale verim, ze si poradis. :)
+
+
+❌  Failed  [Smoke test].[4].[Production.Product].[equal values]
+Database: [AdventureWorks2019]
+Description:  value in column StandardCost must not be greater than value in column ListPrice
+Expectation: SetIsEmpty
+Result: Set is not empty, two values where StandardCost > ListPrice
+
+
+❌  Failed  [Smoke test].[5].[Production.Product].[date not later than 1.1.2000]
+Database: [AdventureWorks2019]
+Description:  date in column SellStartDate must not be later than 1.1.2000
+Expectation: SetIsEmpty
+Result: Set is not empty, 504 rows where date in SellStartDate later than 1.1.2000
+
+❌  Failed  [Integration test].[7].[Production.Product x dbo.DimProduct].[equal value Name]
+Database: [AdventureWorks2019], [AdventureWorksDW2019]
+Description: value Name in Product table must be equal as in DimProduct table  
+Expectation: SetsMatch
+Result: value Name not equal in two tables 
+
+❌  Failed  [Integration test].[9].[Sales.SalesOrderHeader x dbo.FactInternetSales].[equal total sum]
+Database: [AdventureWorks2019], [AdventureWorksDW2019]
+Description: Total sum of each product in table SalesOrderHeader equal to total sum in table FactInternetSales
+Expectation: SetsMatch
+Result: total sum of each product not equal in two tables, different number of raws (266, 158) 
