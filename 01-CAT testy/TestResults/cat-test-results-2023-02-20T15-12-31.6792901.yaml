@@ -1,0 +1,875 @@
+﻿startedOn: 2023-02-20T15:12:30.2364417+01:00
+finishedOn: 2023-02-20T15:12:31.6792212+01:00
+duration: 00:00:01.4427795
+results:
+- executionGuid: 4eb0ca52-fc05-4a53-a37a-f21fd01b76fe
+  testResult: Passed
+  message: >+
+    Both sets have the same number of rows and their values match.
+
+
+    Description: Count of rows
+
+    First Data Source: AW
+
+    First Query:
+
+        SELECT COUNT(*) 
+    FROM [Sales].[SalesOrderHeader] H
+
+    JOIN Sales.SalesOrderDetail D
+
+    ON D.SalesOrderID = H.SalesOrderID
+
+    WHERE OnlineOrderFlag = 1
+
+
+
+    Second Data Source: AWDW
+
+    Second Query:
+
+        SELECT COUNT(*) FROM [dbo].[FactInternetSales]
+
+
+  startTime: 2023-02-20T15:12:30.2364995+01:00
+  endTime: 2023-02-20T15:12:30.6902313+01:00
+  duration: 00:00:00.4537318
+  exceptionMessage: 
+  testDefinition:
+    testDefinitionGuid: 1359eeed-fda2-4d69-a471-200ac993cf7b
+    suite: Integration test
+    order: 1
+    testCase: Sales.SalesOrderHeader x dbo.FactInternetSales
+    name: Sales.SalesOrderHeader x dbo.FactInternetSales
+    testFullName: '[Integration test].[1].[Sales.SalesOrderHeader x dbo.FactInternetSales].[Sales.SalesOrderHeader x dbo.FactInternetSales]'
+    descripiton: Count of rows
+    firstDataSource: AW
+    firstQuery: >
+      SELECT COUNT(*) 
+
+      FROM [Sales].[SalesOrderHeader] H
+
+      JOIN Sales.SalesOrderDetail D
+
+      ON D.SalesOrderID = H.SalesOrderID
+
+      WHERE OnlineOrderFlag = 1
+    secondDataSource: AWDW
+    secondQuery: >
+      SELECT COUNT(*) FROM [dbo].[FactInternetSales]
+    expectation: SetsMatch
+    timeout: 0
+    settings:
+      TestSuite: Integration test
+      Order: 1
+      TestCase: Sales.SalesOrderHeader x dbo.FactInternetSales
+      Name: Sales.SalesOrderHeader x dbo.FactInternetSales
+      Description: Count of rows
+      First Data Source: AW
+      First Query: >
+        SELECT COUNT(*) 
+
+        FROM [Sales].[SalesOrderHeader] H
+
+        JOIN Sales.SalesOrderDetail D
+
+        ON D.SalesOrderID = H.SalesOrderID
+
+        WHERE OnlineOrderFlag = 1
+      Second Data Source: AWDW
+      Second Query: >
+        SELECT COUNT(*) FROM [dbo].[FactInternetSales]
+      Expectation: SetsMatch
+  testDefinitionGuid: 1359eeed-fda2-4d69-a471-200ac993cf7b
+  testName: Sales.SalesOrderHeader x dbo.FactInternetSales
+  testFullName: '[Integration test].[1].[Sales.SalesOrderHeader x dbo.FactInternetSales].[Sales.SalesOrderHeader x dbo.FactInternetSales]'
+  testSuite: Integration test
+  testCase: Sales.SalesOrderHeader x dbo.FactInternetSales
+  description: Count of rows
+  firstDataSource: AW
+  firstQuery: >
+    SELECT COUNT(*) 
+
+    FROM [Sales].[SalesOrderHeader] H
+
+    JOIN Sales.SalesOrderDetail D
+
+    ON D.SalesOrderID = H.SalesOrderID
+
+    WHERE OnlineOrderFlag = 1
+  secondDataSource: AWDW
+  secondQuery: >
+    SELECT COUNT(*) FROM [dbo].[FactInternetSales]
+  expectation: SetsMatch
+- executionGuid: 0a373775-d8dc-4801-bc96-0bda90a83370
+  testResult: Passed
+  message: >2+
+
+
+    Description: Len of Card Number
+
+    First Data Source: AW
+
+    First Query:
+
+        SELECT CardNumber FROM [Sales].[CreditCard] WHERE LEN(CardNumber) <> 14
+
+
+  startTime: 2023-02-20T15:12:30.6916366+01:00
+  endTime: 2023-02-20T15:12:30.6963298+01:00
+  duration: 00:00:00.0046932
+  exceptionMessage: 
+  testDefinition:
+    testDefinitionGuid: c2866a27-566a-4b36-8e81-088d2600d088
+    suite: Smoke test
+    order: 2
+    testCase: Sales.CreditCard
+    name: Sales.CreditCard
+    testFullName: '[Smoke test].[2].[Sales.CreditCard].[Sales.CreditCard]'
+    descripiton: Len of Card Number
+    firstDataSource: AW
+    firstQuery: >
+      SELECT CardNumber FROM [Sales].[CreditCard] WHERE LEN(CardNumber) <> 14
+    secondDataSource: 
+    secondQuery: 
+    expectation: SetIsEmpty
+    timeout: 0
+    settings:
+      TestSuite: Smoke test
+      Order: 2
+      TestCase: Sales.CreditCard
+      Name: Sales.CreditCard
+      Description: Len of Card Number
+      First Data Source: AW
+      First Query: >
+        SELECT CardNumber FROM [Sales].[CreditCard] WHERE LEN(CardNumber) <> 14
+      Expectation: SetIsEmpty
+  testDefinitionGuid: c2866a27-566a-4b36-8e81-088d2600d088
+  testName: Sales.CreditCard
+  testFullName: '[Smoke test].[2].[Sales.CreditCard].[Sales.CreditCard]'
+  testSuite: Smoke test
+  testCase: Sales.CreditCard
+  description: Len of Card Number
+  firstDataSource: AW
+  firstQuery: >
+    SELECT CardNumber FROM [Sales].[CreditCard] WHERE LEN(CardNumber) <> 14
+  secondDataSource: 
+  secondQuery: 
+  expectation: SetIsEmpty
+- executionGuid: 1a25f6d4-abd3-40b8-a705-7740c77077a1
+  testResult: Passed
+  message: >2+
+
+
+    Description: column SafetyStockLevel must not contain 0 or NULL
+
+    First Data Source: AW
+
+    First Query:
+
+        SELECT * 
+    FROM [Production].[Product]
+
+    WHERE SafetyStockLevel = 0 OR SafetyStockLevel IS NULL
+
+
+  startTime: 2023-02-20T15:12:30.6972743+01:00
+  endTime: 2023-02-20T15:12:30.6997729+01:00
+  duration: 00:00:00.0024986
+  exceptionMessage: 
+  testDefinition:
+    testDefinitionGuid: 2180d2c3-c288-4b0f-b54c-750c959f771d
+    suite: Smoke test
+    order: 3
+    testCase: Production.Product
+    name: 0 and NULL values
+    testFullName: '[Smoke test].[3].[Production.Product].[0 and NULL values]'
+    descripiton: column SafetyStockLevel must not contain 0 or NULL
+    firstDataSource: AW
+    firstQuery: >
+      SELECT * 
+
+      FROM [Production].[Product]
+
+      WHERE SafetyStockLevel = 0 OR SafetyStockLevel IS NULL
+    secondDataSource: 
+    secondQuery: 
+    expectation: SetIsEmpty
+    timeout: 0
+    settings:
+      TestSuite: Smoke test
+      Order: 3
+      TestCase: Production.Product
+      Name: 0 and NULL values
+      Description: column SafetyStockLevel must not contain 0 or NULL
+      First Data Source: AW
+      First Query: >
+        SELECT * 
+
+        FROM [Production].[Product]
+
+        WHERE SafetyStockLevel = 0 OR SafetyStockLevel IS NULL
+      Expectation: SetIsEmpty
+  testDefinitionGuid: 2180d2c3-c288-4b0f-b54c-750c959f771d
+  testName: 0 and NULL values
+  testFullName: '[Smoke test].[3].[Production.Product].[0 and NULL values]'
+  testSuite: Smoke test
+  testCase: Production.Product
+  description: column SafetyStockLevel must not contain 0 or NULL
+  firstDataSource: AW
+  firstQuery: >
+    SELECT * 
+
+    FROM [Production].[Product]
+
+    WHERE SafetyStockLevel = 0 OR SafetyStockLevel IS NULL
+  secondDataSource: 
+  secondQuery: 
+  expectation: SetIsEmpty
+- executionGuid: 27761c92-d835-4b13-b36a-5066ef1164b8
+  testResult: Failed
+  message: >+
+    No row was expected but at least one row exists.
+
+
+    ┌──────────────┬───────────┐
+
+    │StandardCost  │ListPrice  │
+
+    ╞══════════════╪═══════════╡
+
+    │666.0000      │0.0000     │
+
+    └──────────────┴───────────┘
+
+
+
+    Description: value in column StandardCost must not be greater than value in column ListPrice
+
+    First Data Source: AW
+
+    First Query:
+
+        SELECT StandardCost, ListPrice 
+    FROM [Production].[Product]
+
+    WHERE StandardCost > ListPrice
+
+
+  startTime: 2023-02-20T15:12:30.7006961+01:00
+  endTime: 2023-02-20T15:12:30.7030473+01:00
+  duration: 00:00:00.0023512
+  exceptionMessage: 
+  testDefinition:
+    testDefinitionGuid: e7af1d7e-409f-4fdf-916b-39508ee4af00
+    suite: Smoke test
+    order: 4
+    testCase: Production.Product
+    name: equal values
+    testFullName: '[Smoke test].[4].[Production.Product].[equal values]'
+    descripiton: value in column StandardCost must not be greater than value in column ListPrice
+    firstDataSource: AW
+    firstQuery: >
+      SELECT StandardCost, ListPrice 
+
+      FROM [Production].[Product]
+
+      WHERE StandardCost > ListPrice
+    secondDataSource: 
+    secondQuery: 
+    expectation: SetIsEmpty
+    timeout: 0
+    settings:
+      TestSuite: Smoke test
+      Order: 4
+      TestCase: Production.Product
+      Name: equal values
+      Description: value in column StandardCost must not be greater than value in column ListPrice
+      First Data Source: AW
+      First Query: >
+        SELECT StandardCost, ListPrice 
+
+        FROM [Production].[Product]
+
+        WHERE StandardCost > ListPrice
+      Expectation: SetIsEmpty
+  testDefinitionGuid: e7af1d7e-409f-4fdf-916b-39508ee4af00
+  testName: equal values
+  testFullName: '[Smoke test].[4].[Production.Product].[equal values]'
+  testSuite: Smoke test
+  testCase: Production.Product
+  description: value in column StandardCost must not be greater than value in column ListPrice
+  firstDataSource: AW
+  firstQuery: >
+    SELECT StandardCost, ListPrice 
+
+    FROM [Production].[Product]
+
+    WHERE StandardCost > ListPrice
+  secondDataSource: 
+  secondQuery: 
+  expectation: SetIsEmpty
+- executionGuid: 1413f3ee-5331-4d53-a6b9-37a591d04f3b
+  testResult: Failed
+  message: >+
+    No row was expected but at least one row exists.
+
+
+    ┌───────────┬─────────────────┬───────────────┬──────────┬───────────────────┬───────┬──────────────────┬──────────────┬──────────────┬───────────┬──────┬─────────────────────┬───────────────────────┬────────┬───────────────────┬─────────────┬───────┬───────┬──────────────────────┬────────────────┬───────────────────────┬─────────────┬──────────────────┬───────────────────────────┬──────────────────────┐
+
+    │ProductID  │Name             │ProductNumber  │MakeFlag  │FinishedGoodsFlag  │Color  │SafetyStockLevel  │ReorderPoint  │StandardCost  │ListPrice  │Size  │SizeUnitMeasureCode  │WeightUnitMeasureCode  │Weight  │DaysToManufacture  │ProductLine  │Class  │Style  │ProductSubcategoryID  │ProductModelID  │SellStartDate          │SellEndDate  │DiscontinuedDate  │rowguid                    │ModifiedDate          │
+
+    ╞═══════════╪═════════════════╪═══════════════╪══════════╪═══════════════════╪═══════╪══════════════════╪══════════════╪══════════════╪═══════════╪══════╪═════════════════════╪═══════════════════════╪════════╪═══════════════════╪═════════════╪═══════╪═══════╪══════════════════════╪════════════════╪═══════════════════════╪═════════════╪══════════════════╪═══════════════════════════╪══════════════════════╡
+
+    │1          │Adjustable Race  │AR-5381        │False     │False              │       │1000              │750           │0.0000        │0.0000     │      │                     │                       │        │0                  │             │       │       │                      │                │4/30/2008 12:00:00 AM  │             │                  │694215b7-08f7-4c0d-acb...  │2/8/2014 10:01:36 AM  │
+
+    └───────────┴─────────────────┴───────────────┴──────────┴───────────────────┴───────┴──────────────────┴──────────────┴──────────────┴───────────┴──────┴─────────────────────┴───────────────────────┴────────┴───────────────────┴─────────────┴───────┴───────┴──────────────────────┴────────────────┴───────────────────────┴─────────────┴──────────────────┴───────────────────────────┴──────────────────────┘
+
+
+
+    Description: date in column SellStartDate must not be later than 1.1.2000
+
+    First Data Source: AW
+
+    First Query:
+
+        SELECT * 
+    FROM [Production].[Product]
+
+    WHERE SellStartDate > 2000-01-01
+
+
+  startTime: 2023-02-20T15:12:30.7039430+01:00
+  endTime: 2023-02-20T15:12:30.7453237+01:00
+  duration: 00:00:00.0413807
+  exceptionMessage: 
+  testDefinition:
+    testDefinitionGuid: f25dfc6d-0e14-4485-aa73-de931dbb5b36
+    suite: Smoke test
+    order: 5
+    testCase: Production.Product
+    name: date not later than 1.1.2000
+    testFullName: '[Smoke test].[5].[Production.Product].[date not later than 1.1.2000]'
+    descripiton: date in column SellStartDate must not be later than 1.1.2000
+    firstDataSource: AW
+    firstQuery: >
+      SELECT * 
+
+      FROM [Production].[Product]
+
+      WHERE SellStartDate > 2000-01-01
+    secondDataSource: 
+    secondQuery: 
+    expectation: SetIsEmpty
+    timeout: 0
+    settings:
+      TestSuite: Smoke test
+      Order: 5
+      TestCase: Production.Product
+      Name: date not later than 1.1.2000
+      Description: date in column SellStartDate must not be later than 1.1.2000
+      First Data Source: AW
+      First Query: >
+        SELECT * 
+
+        FROM [Production].[Product]
+
+        WHERE SellStartDate > 2000-01-01
+      Expectation: SetIsEmpty
+  testDefinitionGuid: f25dfc6d-0e14-4485-aa73-de931dbb5b36
+  testName: date not later than 1.1.2000
+  testFullName: '[Smoke test].[5].[Production.Product].[date not later than 1.1.2000]'
+  testSuite: Smoke test
+  testCase: Production.Product
+  description: date in column SellStartDate must not be later than 1.1.2000
+  firstDataSource: AW
+  firstQuery: >
+    SELECT * 
+
+    FROM [Production].[Product]
+
+    WHERE SellStartDate > 2000-01-01
+  secondDataSource: 
+  secondQuery: 
+  expectation: SetIsEmpty
+- executionGuid: 37b85fbe-7de4-457b-8167-ff25db92f729
+  testResult: Passed
+  message: >2+
+
+
+    Description: value in column TransactionType must contain only values W, S, P
+
+    First Data Source: AW
+
+    First Query:
+
+        SELECT * 
+    FROM [Production].[TransactionHistory]
+
+    WHERE TransactionType NOT IN ('W', 'S', 'P')
+
+
+  startTime: 2023-02-20T15:12:30.7692895+01:00
+  endTime: 2023-02-20T15:12:30.9605627+01:00
+  duration: 00:00:00.1912732
+  exceptionMessage: 
+  testDefinition:
+    testDefinitionGuid: 440e8f94-87ab-4214-99ba-998d20f4c064
+    suite: Smoke test
+    order: 6
+    testCase: Production.Product
+    name: values W, S, P in TransactionType
+    testFullName: '[Smoke test].[6].[Production.Product].[values W, S, P in TransactionType]'
+    descripiton: value in column TransactionType must contain only values W, S, P
+    firstDataSource: AW
+    firstQuery: >
+      SELECT * 
+
+      FROM [Production].[TransactionHistory]
+
+      WHERE TransactionType NOT IN ('W', 'S', 'P')
+    secondDataSource: 
+    secondQuery: 
+    expectation: SetIsEmpty
+    timeout: 0
+    settings:
+      TestSuite: Smoke test
+      Order: 6
+      TestCase: Production.Product
+      Name: values W, S, P in TransactionType
+      Description: value in column TransactionType must contain only values W, S, P
+      First Data Source: AW
+      First Query: >
+        SELECT * 
+
+        FROM [Production].[TransactionHistory]
+
+        WHERE TransactionType NOT IN ('W', 'S', 'P')
+      Expectation: SetIsEmpty
+  testDefinitionGuid: 440e8f94-87ab-4214-99ba-998d20f4c064
+  testName: values W, S, P in TransactionType
+  testFullName: '[Smoke test].[6].[Production.Product].[values W, S, P in TransactionType]'
+  testSuite: Smoke test
+  testCase: Production.Product
+  description: value in column TransactionType must contain only values W, S, P
+  firstDataSource: AW
+  firstQuery: >
+    SELECT * 
+
+    FROM [Production].[TransactionHistory]
+
+    WHERE TransactionType NOT IN ('W', 'S', 'P')
+  secondDataSource: 
+  secondQuery: 
+  expectation: SetIsEmpty
+- executionGuid: e94779a9-a6ef-4e0e-b1cc-5edd6a0a0b8b
+  testResult: Failed
+  message: >+
+    Different value on row # 45 in column 1 (Name): in the first set '! Front Brake', in the second set '! Front Brakes'.
+
+
+    The first set and the second set are different:
+
+
+    FIRST SET:
+
+    ┌────┬───────────────┐
+
+    │#   │Name           │
+
+    ╞════╪═══════════════╡
+
+    │45  │! Front Brake  │
+
+    └────┴───────────────┘
+
+
+
+    SECOND SET:
+
+    ┌────┬────────────────────┐
+
+    │#   │EnglishProductName  │
+
+    ╞════╪════════════════════╡
+
+    │45  │! Front Brakes      │
+
+    └────┴────────────────────┘
+
+
+
+
+    Description: value Name in Product table must be equal as in DimProduct table
+
+    First Data Source: AW
+
+    First Query:
+
+        SELECT DISTINCT Name
+    FROM [Production].[Product] 
+
+    ORDER BY Name
+
+
+
+    Second Data Source: AWDW
+
+    Second Query:
+
+        SELECT DISTINCT EnglishProductName 
+    FROM [dbo].[DimProduct]
+
+    ORDER BY EnglishProductName
+
+
+  startTime: 2023-02-20T15:12:30.9660602+01:00
+  endTime: 2023-02-20T15:12:31.0183362+01:00
+  duration: 00:00:00.0522760
+  exceptionMessage: 
+  testDefinition:
+    testDefinitionGuid: c6b47b46-4a55-4441-88d6-2e5980363467
+    suite: Integration test
+    order: 7
+    testCase: Production.Product x dbo.DimProduct
+    name: equal value Name
+    testFullName: '[Integration test].[7].[Production.Product x dbo.DimProduct].[equal value Name]'
+    descripiton: value Name in Product table must be equal as in DimProduct table
+    firstDataSource: AW
+    firstQuery: >
+      SELECT DISTINCT Name
+
+      FROM [Production].[Product] 
+
+      ORDER BY Name
+    secondDataSource: AWDW
+    secondQuery: >
+      SELECT DISTINCT EnglishProductName 
+
+      FROM [dbo].[DimProduct]
+
+      ORDER BY EnglishProductName
+    expectation: SetsMatch
+    timeout: 0
+    settings:
+      TestSuite: Integration test
+      Order: 7
+      TestCase: Production.Product x dbo.DimProduct
+      Name: equal value Name
+      Description: value Name in Product table must be equal as in DimProduct table
+      First Data Source: AW
+      First Query: >
+        SELECT DISTINCT Name
+
+        FROM [Production].[Product] 
+
+        ORDER BY Name
+      Second Data Source: AWDW
+      Second Query: >
+        SELECT DISTINCT EnglishProductName 
+
+        FROM [dbo].[DimProduct]
+
+        ORDER BY EnglishProductName
+      Expectation: SetsMatch
+  testDefinitionGuid: c6b47b46-4a55-4441-88d6-2e5980363467
+  testName: equal value Name
+  testFullName: '[Integration test].[7].[Production.Product x dbo.DimProduct].[equal value Name]'
+  testSuite: Integration test
+  testCase: Production.Product x dbo.DimProduct
+  description: value Name in Product table must be equal as in DimProduct table
+  firstDataSource: AW
+  firstQuery: >
+    SELECT DISTINCT Name
+
+    FROM [Production].[Product] 
+
+    ORDER BY Name
+  secondDataSource: AWDW
+  secondQuery: >
+    SELECT DISTINCT EnglishProductName 
+
+    FROM [dbo].[DimProduct]
+
+    ORDER BY EnglishProductName
+  expectation: SetsMatch
+- executionGuid: 9221a782-b48a-438f-8e3a-68ff108ebd29
+  testResult: Failed
+  message: >+
+    Different value on row # 1 in column 1 (): in the first set '! 606', in the second set '! 776286'.
+
+
+    The first set and the second set are different:
+
+
+    FIRST SET:
+
+    ┌───┬───────┐
+
+    │#  │       │
+
+    ╞═══╪═══════╡
+
+    │1  │! 606  │
+
+    └───┴───────┘
+
+
+
+    SECOND SET:
+
+    ┌───┬──────────┐
+
+    │#  │          │
+
+    ╞═══╪══════════╡
+
+    │1  │! 776286  │
+
+    └───┴──────────┘
+
+
+
+
+    Description: each product from table DimProduct must have record in table FactProductInventory
+
+    First Data Source: AWDW
+
+    First Query:
+
+        SELECT COUNT(*) 
+    FROM [dbo].[DimProduct]
+
+
+
+    Second Data Source: AWDW
+
+    Second Query:
+
+        SELECT COUNT(*) FROM [dbo].[FactProductInventory]
+
+
+  startTime: 2023-02-20T15:12:31.0249698+01:00
+  endTime: 2023-02-20T15:12:31.2001643+01:00
+  duration: 00:00:00.1751945
+  exceptionMessage: 
+  testDefinition:
+    testDefinitionGuid: b0bb8480-0ea3-44d8-a346-fef27c44135c
+    suite: Integration test
+    order: 8
+    testCase: dbo.DimProduct x dbo.FactProductInventory
+    name: each product has record
+    testFullName: '[Integration test].[8].[dbo.DimProduct x dbo.FactProductInventory].[each product has record]'
+    descripiton: each product from table DimProduct must have record in table FactProductInventory
+    firstDataSource: AWDW
+    firstQuery: >
+      SELECT COUNT(*) 
+
+      FROM [dbo].[DimProduct]
+    secondDataSource: AWDW
+    secondQuery: >
+      SELECT COUNT(*) FROM [dbo].[FactProductInventory]
+    expectation: SetsMatch
+    timeout: 0
+    settings:
+      TestSuite: Integration test
+      Order: 8
+      TestCase: dbo.DimProduct x dbo.FactProductInventory
+      Name: each product has record
+      Description: each product from table DimProduct must have record in table FactProductInventory
+      First Data Source: AWDW
+      First Query: >
+        SELECT COUNT(*) 
+
+        FROM [dbo].[DimProduct]
+      Second Data Source: AWDW
+      Second Query: >
+        SELECT COUNT(*) FROM [dbo].[FactProductInventory]
+      Expectation: SetsMatch
+  testDefinitionGuid: b0bb8480-0ea3-44d8-a346-fef27c44135c
+  testName: each product has record
+  testFullName: '[Integration test].[8].[dbo.DimProduct x dbo.FactProductInventory].[each product has record]'
+  testSuite: Integration test
+  testCase: dbo.DimProduct x dbo.FactProductInventory
+  description: each product from table DimProduct must have record in table FactProductInventory
+  firstDataSource: AWDW
+  firstQuery: >
+    SELECT COUNT(*) 
+
+    FROM [dbo].[DimProduct]
+  secondDataSource: AWDW
+  secondQuery: >
+    SELECT COUNT(*) FROM [dbo].[FactProductInventory]
+  expectation: SetsMatch
+- executionGuid: e9bea2b0-6cd2-4d4b-b520-856c72c8fd84
+  testResult: Failed
+  message: >+
+    Different value on row # 1 in column 1 (ProductID): in the first set '! 707', in the second set '! 214'.
+
+
+    The first set and the second set are different:
+
+
+    FIRST SET:
+
+    ┌───┬───────────┬───────────────┐
+
+    │#  │ProductID  │               │
+
+    ╞═══╪═══════════╪═══════════════╡
+
+    │1  │! 707      │157772.394392  │
+
+    └───┴───────────┴───────────────┘
+
+
+
+    SECOND SET:
+
+    ┌───┬────────────┬────────────┐
+
+    │#  │ProductKey  │            │
+
+    ╞═══╪════════════╪════════════╡
+
+    │1  │! 214       │29182.4490  │
+
+    └───┴────────────┴────────────┘
+
+
+
+
+    Description: Total sum of each product in table SalesOrderHeader equal to total sum in table FactInternetSales
+
+    First Data Source: AW
+
+    First Query:
+
+        SELECT D.ProductID, SUM(LineTotal)  
+    FROM [Sales].[SalesOrderHeader] H
+
+    JOIN Sales.SalesOrderDetail D
+
+    ON D.SalesOrderID = H.SalesOrderID
+
+    GROUP BY D.ProductID
+
+    ORDER BY D.ProductID
+
+
+
+    Second Data Source: AWDW
+
+    Second Query:
+
+        SELECT ProductKey, SUM(TotalProductCost) 
+    FROM [dbo].[FactInternetSales] 
+
+    GROUP BY ProductKey
+
+    ORDER BY ProductKey
+
+
+  startTime: 2023-02-20T15:12:31.2020817+01:00
+  endTime: 2023-02-20T15:12:31.6779504+01:00
+  duration: 00:00:00.4758687
+  exceptionMessage: 
+  testDefinition:
+    testDefinitionGuid: 470d4e18-dc24-4a27-a0fa-5554dd8c4888
+    suite: Integration test
+    order: 9
+    testCase: Sales.SalesOrderHeader x dbo.FactInternetSales
+    name: equal total sum
+    testFullName: '[Integration test].[9].[Sales.SalesOrderHeader x dbo.FactInternetSales].[equal total sum]'
+    descripiton: Total sum of each product in table SalesOrderHeader equal to total sum in table FactInternetSales
+    firstDataSource: AW
+    firstQuery: >
+      SELECT D.ProductID, SUM(LineTotal)  
+
+      FROM [Sales].[SalesOrderHeader] H
+
+      JOIN Sales.SalesOrderDetail D
+
+      ON D.SalesOrderID = H.SalesOrderID
+
+      GROUP BY D.ProductID
+
+      ORDER BY D.ProductID
+    secondDataSource: AWDW
+    secondQuery: >
+      SELECT ProductKey, SUM(TotalProductCost) 
+
+      FROM [dbo].[FactInternetSales] 
+
+      GROUP BY ProductKey
+
+      ORDER BY ProductKey
+    expectation: SetsMatch
+    timeout: 0
+    settings:
+      TestSuite: Integration test
+      Order: 9
+      TestCase: Sales.SalesOrderHeader x dbo.FactInternetSales
+      Name: equal total sum
+      Description: Total sum of each product in table SalesOrderHeader equal to total sum in table FactInternetSales
+      First Data Source: AW
+      First Query: >
+        SELECT D.ProductID, SUM(LineTotal)  
+
+        FROM [Sales].[SalesOrderHeader] H
+
+        JOIN Sales.SalesOrderDetail D
+
+        ON D.SalesOrderID = H.SalesOrderID
+
+        GROUP BY D.ProductID
+
+        ORDER BY D.ProductID
+      Second Data Source: AWDW
+      Second Query: >
+        SELECT ProductKey, SUM(TotalProductCost) 
+
+        FROM [dbo].[FactInternetSales] 
+
+        GROUP BY ProductKey
+
+        ORDER BY ProductKey
+      Expectation: SetsMatch
+  testDefinitionGuid: 470d4e18-dc24-4a27-a0fa-5554dd8c4888
+  testName: equal total sum
+  testFullName: '[Integration test].[9].[Sales.SalesOrderHeader x dbo.FactInternetSales].[equal total sum]'
+  testSuite: Integration test
+  testCase: Sales.SalesOrderHeader x dbo.FactInternetSales
+  description: Total sum of each product in table SalesOrderHeader equal to total sum in table FactInternetSales
+  firstDataSource: AW
+  firstQuery: >
+    SELECT D.ProductID, SUM(LineTotal)  
+
+    FROM [Sales].[SalesOrderHeader] H
+
+    JOIN Sales.SalesOrderDetail D
+
+    ON D.SalesOrderID = H.SalesOrderID
+
+    GROUP BY D.ProductID
+
+    ORDER BY D.ProductID
+  secondDataSource: AWDW
+  secondQuery: >
+    SELECT ProductKey, SUM(TotalProductCost) 
+
+    FROM [dbo].[FactInternetSales] 
+
+    GROUP BY ProductKey
+
+    ORDER BY ProductKey
+  expectation: SetsMatch
+passedCount: 4
+failedCount: 5
+errorCount: 0
+notYetExecutedCount: 0
+inconclusiveCount: 0
+skippedCount: 0
+unknownCount: 0
+totalCount: 9
