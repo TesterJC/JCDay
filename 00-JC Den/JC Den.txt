@@ -11,3 +11,13 @@ pak vse jen ulozis do repozitare v Gitu, zareportujes bugy a odprezentujes nam t
 
 Mas kolik casu budes chtit a urcite se ptej kohokoli, pokud si nebudes s necim vedet rady.
 CATu nejvic rozumi Helca, Tereza nebo Petr. SQL, Gitu a ostatnim vecem tu rozumi vsichni. :)
+
+----------------------------------------------------------------------------------------------
+
+ENG version:
+
+We have prepared a few tasks for you. You don't have to complete everything perfectly, we appreciate effort. :)
+First, you will try to write a few tests in our new testing tool called CAT, then you will save everything to the Git repository, report bugs, and present it to us.
+
+You can take as much time as you need, and be sure to ask anyone if you need help with anything.
+Helca, Tereza, or Petr understand CAT the most. Everyone here understands SQL, Git, and other things. :)

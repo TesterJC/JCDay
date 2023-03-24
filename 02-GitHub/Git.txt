@@ -15,3 +15,10 @@
 - vsechny soubory, ktere vytvoris a zmeny, ktere udelas, pushni do GitHub repozitare
 https://github.com/TesterJC/JCDay
 - nepushuj je ale do 'main' branche, vytvor si vlastni branch s tvym jmenem
+
+----------------------------------------------------------------------------------------------
+
+ENG version:
+
+Push all the files you create and changes you make to the GitHub repository https://github.com/TesterJC/JCDay
+However, do not push them to the 'main' branch, create your own branch with your name.

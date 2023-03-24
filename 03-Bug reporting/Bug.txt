@@ -15,3 +15,11 @@
 - urcite v databazi objevis nejaky bug. Vytvor soubor (nebo pouzij tento) a bug reportuj dalsim clenum tymu.
 - vetsinou se tim budou zabyvat developeri, tak jim podle uvazeni popis, co se stalo. 
 - obrazky sem nejdou vkladat, ale verim, ze si poradis. :)
+
+----------------------------------------------------------------------------------------------
+
+ENG version:
+
+- You will definitely come across some bugs in the database. Create a file (or use this one) and report the bugs to other team members.
+- Usually, the developers will take care of it, so describe to them what happened as appropriate.
+- Images cannot be included here, but I believe you'll manage. :)

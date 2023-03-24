@@ -19,3 +19,14 @@
 - Zadani testu je v souboru 'Zadani CAT testy.md' - otevri ve Visual Studio Code a zmackni ctrl + shift + v pro lepsi zobrazeni
 nebo na odkaze: https://github.com/TesterJC/JCDay/blob/main/01-CAT%20testy/Zadani%20CAT%20testy.md
 - Projekt, do ktereho mas psat testy se jmenuje 'JCDen.cat.yaml'
+
+----------------------------------------------------------------------------------------------
+
+ENG version:
+
+- Run CAT tests using PowerShell 7 or Visual Studio Code
+- In the terminal, you need to have the path to the location where the CAT project is located: 'C:\Users\tester\Documents\GitHub\JCDay\01-CAT testy'
+- Before running CAT commands in PowerShell, import the CAT module - Import-Module CAT
+
+- The test assignment is in the file 'Zadani CAT testy.md' - open it in Visual Studio Code and press Ctrl+Shift+V for better display or follow this link: https://github.com/TesterJC/JCDay/blob/main/01-CAT%20testy/Zadani%20CAT%20testy.md
+- The project in which you should write the tests is called 'JCDen.cat.yaml'

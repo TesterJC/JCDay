@@ -1,38 +1,41 @@
 # Adventure Works Cycles - Production
 
-## CAT testy
+## CAT tests
 
-Pracujeme s databázemi AdventureWorks2019 a AdventureWorksDW2019, které shromažďují data o fiktivním nadnárodním výrobci jízdních kol Adventure Works Cycles, a s Power BI reportem DQaaS Lab, který používá CEO, šéf oddělení produkce a developerský tým.
+We're working with the AdventureWorks2019 and AdventureWorksDW2019 databases, which collect data about a fictional multinational bicycle manufacturer called Adventure Works Cycles, and with the Power BI report DQaaS Lab, which is used by the CEO, production department head, and development team.
 
-Data je potřeba kontrolovat, protože jsou na jejich základě tvořena důležitá byznysová rozhodnutí. Klíčoví stakeholdeři a šéfové oddělení produkce sepsali pro QA základní požadavky, které data musí splňovat.
+Data needs to be checked because important business decisions are made based on it. Key stakeholders and production department heads have listed basic requirements for QA that the data must meet.
 
-V části A jsou sepsány požadavky na Smoke testy, v části B jsou požadavky na integrační testy pro tabulky v databázi AdventureWorks2019 a tabulky v databázi AdventureWorksDW2019.
+Section A lists requirements for Smoke tests, and Section B lists requirements for integration tests for tables in the AdventureWorks2019 database and tables in the AdventureWorksDW2019 database.
 
-Na konci dokumentu můžete najít informace o tabulkách v AdventureWorks2019.
-
-## A)  Smoke testy
-
-| Testovací požadavek | Název tabulky v databázi AdventureWorks2019 | Query |
-| --- | --- | --- |
-| Hodnoty ve sloupci SafetyStockLevel nesmí obsahovat hodnotu 0 nebo NULL | [Production].[Product] | |
-| Hodnota ve sloupci StandardCost nesmí být větší než hodnota ve sloupci ListPrice | [Production].[Product] | |
-| Datum ve sloupci SellStartDate nesmí být starší než 1.1.2000|[Production].[Product]| |
-| Hodnota ve sloupci TransactionType musí obsahovat pouze hodnoty W, S nebo P|[Production].[TransactionHistory] | |
-
-## B)  Integrační testy
-
-| Testovací požadavek | Tabulka v AdventureWorks2019 | Tabulka v AdventureWorksDW2019 | Query AdventureWorks2019 | Query AdventureWorksDW2019 |
-|---|---|---|---|---|
-| Hodnoty Name v tabulce Product musí být stejné jako v tabulce DimProduct | [Production].[Product] | [dbo].[DimProduct] |  |  |
-| Každý produkt z tabulky DimProduct musí mít záznam v tabulce FactProductInventory| - | 1. [dbo].[DimProduct], <br> 2. [dbo].[FactProductInventory] | - |  |
-| Celková suma za každý produkt v tabulce SalesOrderHeader se musí rovnat celkové sumě v tabulce FactInternetSales | [Sales].[SalesOrderHeader] | [dbo].[FactInternetSales] | | |
-
-
+At the end of the document, you can find information about tables in AdventureWorks2019.
 
 <br>
 
-### Přehled tabulek za oddělení Production v databázi AdventureWorks2019
-  |Název tabulky | Stručný popis |
+## A)  Smoke tests
+
+| Test requirement | Table name in AdventureWorks2019 database | Query |
+| --- | --- | --- |
+| Values in the SafetyStockLevel column must not contain 0 or NULL | [Production].[Product] | |
+| The value in the StandardCost column must not be greater than the value in the ListPrice column | [Production].[Product] | |
+| The date in the SellStartDate column must not be earlier than 1/1/2000 (that means 31/12/1999, 30/12/1999 etc) |[Production].[Product]| |
+| The value in the TransactionType column must contain only the values W, S, or P |[Production].[TransactionHistory] | |
+
+<br>
+
+## B)  Integration tests
+
+| Test requirement | Table name in AdventureWorks2019 | Table name in AdventureWorksDW2019 | Query AdventureWorks2019 | Query AdventureWorksDW2019 |
+| --- | --- | --- | --- | --- |
+| Values of Name in the Product table must be the same as in the DimProduct table | [Production].[Product] | [dbo].[DimProduct] |  |  |
+| Every product in the DimProduct table must have a record in the FactProductInventory table | - | 1. [dbo].[DimProduct], <br> 2. [dbo].[FactProductInventory] | - |  |
+| The total amount for each product in the SalesOrderHeader table must be equal to the total amount in the FactInternetSales table | [Sales].[SalesOrderHeader] | [dbo].[FactInternetSales] | | |
+
+<br>
+
+### Overview of tables for the Production department in the AdventureWorks2019 database
+
+  |Table name | Brief description |
   |---|---|
   |Production.Culture                                 |Lookup table containing the languages in which some AdventureWorks data is stored.
   |Production.Document                                |Product maintenance documents.
@@ -52,6 +55,6 @@ Na konci dokumentu můžete najít informace o tabulkách v AdventureWorks2019.
 
 <br>
 
-### Schéma tabulek v databázi AdventureWorks2019
+### Table schema in the AdventureWorks2019 database
 
 ![Schema Production tabulek](Images/media/SchemaTabulek.png)
