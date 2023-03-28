@@ -1,0 +1,64 @@
+ID1
+
+Title: Some values in the StandardCost are greater than the value in the ListPrice column.
+
+Prerequisites:
+- Microsoft SQL Server Management Studio, version 19.0.1
+- settings: please see the picture
+- sql-qalab.database.windows.net(SQL Server 12.0.2000.8 - tester)
+- table AdventureWorks2019
+- StandardCost and ListPrice columns are available
+
+Expected result:
+The query returns blank table. 
+
+Actual Result:
+The query return a table with values since some of the values in the StandardCost column are greater then the values in the ListPrice column. 
+
+Steps:
+1. Open the Microsoft SQL Server Management Studio.
+2. Select the AdventureWorks2019 database. 
+3. Navigate to the Production.Product table. 
+4. Set the query:
+SELECT * FROM Production.Product
+WHERE StandardCost > ListPrice;
+5. Execute. 
+
+Severity: middle
+
+_________________________________________________________________________________________
+ID2 UNABLE TO TEST
+
+Title: The TransactionType column is not available
+
+Prerequisites:
+- Microsoft SQL Server Management Studio, version 19.0.1
+- settings: please see the picture
+- sql-qalab.database.windows.net(SQL Server 12.0.2000.8 - tester)
+- table AdventureWorks2019
+- The TransactionType column is not available in the table so the test can´t be performed. 
+
+Test: The value in the TransactionType column must contain only the values W, S, or P
+
+Severity: high
+___________________________________________________________________________________________
+ID3 
+
+Title: Values in name colums don´t match 
+
+Prerequisites:
+- Microsoft SQL Server Management Studio, version 19.0.1
+- settings: please see the picture
+- sql-qalab.database.windows.net(SQL Server 12.0.2000.8 - tester)
+- DB AdventureWorks2019, table Production.Product, Name column is available
+- DB AdventureWorksDW2019, tyble dbo.DimProduct, EnglishProductName is available
+
+Expected result:
+The data in both columns should match. 
+
+Actual Result:
+Data with ID number 2 don´t match. 
+
+
+Severity: middle
+

@@ -32,3 +32,43 @@ Tests:
     Expectation: SetIsEmpty
     
 #--------------------------------------------------------------------------------#
+    # TOTO JSOU MOJE TESTY #
+
+-   Name: Check that SafetyStockLevel column doesn´t contain 0 or NULL
+    Description: SafetyStockLevel column must not contain 0 or NULL
+    First Data Source: AW
+    First Query: >
+      SELECT * FROM Production.Product
+      WHERE SafetyStockLevel =0 OR SafetyStockLevel IS NULL;
+    Expectation: SetIsEmpty
+    
+
+-   Name: Comprare of the StandardCost column and the ListPrice column
+    Description: The value in the StandardCost column must not be greater than the value in the ListPrice column  
+    First Data Source: AW
+    First Query: >
+      SELECT * FROM Production.Product
+      WHERE StandardCost > ListPrice;
+    Expectation: SetIsEmpty
+
+-   Name: Check for the date in the SellStartDate column 
+    Description: The date in the SellStartDate column must not be earlier than 1/1/2000 
+    First Data Source: AW
+    First Query: >
+      SELECT * FROM Production.Product
+      WHERE SafetyStockLevel =0 OR SafetyStockLevel IS NULL;
+    Expectation: SetIsEmpty
+
+
+- Name: Compare Product Name columns 
+  Description: Values of Name in the Product table must be the same as in the DimProduct table
+  First Data Source: AW
+  First Query: |
+      SELECT Name FROM Production.Product;
+  Second Data Source: AWDW
+  Second Query: |
+      SELECT EnglishProductName FROM dbo.DimProduct
+  Expectation: SetsMatch
+
+  
+    
