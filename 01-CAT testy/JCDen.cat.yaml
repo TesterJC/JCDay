@@ -30,5 +30,4 @@ Tests:
       SELECT CardNumber FROM [Sales].[CreditCard]
       WHERE LEN(CardNumber) <> 14
     Expectation: SetIsEmpty
-    
 #--------------------------------------------------------------------------------#
