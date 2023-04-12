@@ -75,7 +75,7 @@ Tests:
       SELECT DISTINCT(EnglishProductName) FROM dbo.DimProduct
       ORDER BY EnglishProductName
   Expectation: SetsMatch
-  #--------------------------------------------------------------------------------#
+#--------------------------------------------------------------------------------#
 - Name: dbo.DimProduct x dbo.FactProductInventory
   Description: Every product in dbo.DimProduct should be in dbo.FactProductInventory
   First Data Source: AWDW
@@ -85,7 +85,7 @@ Tests:
   Second Query: |
       SELECT DISTINCT(ProductKey) FROM dbo.FactProductInventory
   Expectation: SetsMatch
-    #--------------------------------------------------------------------------------#
+#--------------------------------------------------------------------------------#
 - Name: Sales.SalesOrderHeader x dbo.FactInternetSales
   Description: Product amounts should be equal in both tables
   First Data Source: AW
