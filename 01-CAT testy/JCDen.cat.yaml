@@ -31,3 +31,74 @@ Tests:
       WHERE LEN(CardNumber) <> 14
     Expectation: SetIsEmpty
 #--------------------------------------------------------------------------------#
+-   Name: Product.Production.SafetyStockLevel
+    Description: SafetyStockLevel not 0 or NULL 
+    First Data Source: AW
+    First Query: >
+      SELECT SafetyStockLevel FROM Production.Product
+      WHERE SafetyStockLevel IS NULL
+      AND SafetyStockLevel = 0;
+    Expectation: SetIsEmpty
+#--------------------------------------------------------------------------------#
+-   Name: Product.Production.StandardCost x ListPrice
+    Description: StandardCost not greater than ListPrice
+    First Data Source: AW
+    First Query: >
+      SELECT * FROM Production.Product
+      WHERE StandardCost > ListPrice;
+    Expectation: SetIsEmpty
+#--------------------------------------------------------------------------------#
+-   Name: Product.Production.SellStartDate
+    Description: SellStartDate not earlier than 01/01/2000
+    First Data Source: AW
+    First Query: >
+      SELECT * FROM Production.Product
+      WHERE SellStartDate < '2000-01-01 00:00:00.000';
+    Expectation: SetIsEmpty
+#--------------------------------------------------------------------------------#
+-   Name: Product.TransactionHistory.TransactionType
+    Description: TransactionType is in W, S, P 
+    First Data Source: AW
+    First Query: >
+      SELECT * FROM Production.TransactionHistory
+      WHERE TransactionType NOT IN ('W', 'S', 'P');
+    Expectation: SetIsEmpty
+#--------------------------------------------------------------------------------#
+- Name: Production.Product.Name x dbo.DimProduct.EnglishProductName
+  Description: Values of Name should equal values of EnglishProductName
+  First Data Source: AW
+  First Query: |
+      SELECT DISTINCT(Name) FROM Production.Product
+      ORDER BY Name
+  Second Data Source: AWDW
+  Second Query: |
+      SELECT DISTINCT(EnglishProductName) FROM dbo.DimProduct
+      ORDER BY EnglishProductName
+  Expectation: SetsMatch
+  #--------------------------------------------------------------------------------#
+- Name: dbo.DimProduct x dbo.FactProductInventory
+  Description: Every product in dbo.DimProduct should be in dbo.FactProductInventory
+  First Data Source: AWDW
+  First Query: |
+      SELECT DISTINCT(ProductKey) FROM dbo.DimProduct
+  Second Data Source: AWDW
+  Second Query: |
+      SELECT DISTINCT(ProductKey) FROM dbo.FactProductInventory
+  Expectation: SetsMatch
+    #--------------------------------------------------------------------------------#
+- Name: Sales.SalesOrderHeader x dbo.FactInternetSales
+  Description: Product amounts should be equal in both tables
+  First Data Source: AW
+  First Query: |
+      SELECT P.Name, COUNT(*) AS Count_of_product FROM Sales.SalesOrderHeader SOH
+      JOIN Sales.SalesOrderDetail SOD ON SOH.SalesOrderID = SOD.SalesOrderID
+      JOIN Production.Product P ON P.ProductID = SOD.ProductID
+      GROUP BY P.Name
+      ORDER BY P.Name
+  Second Data Source: AWDW
+  Second Query: |
+      SELECT DP.EnglishProductName, COUNT(*) FROM dbo.FactInternetSales FIS
+      JOIN dbo.DimProduct DP on FIS.ProductKey = DP.ProductKey
+      GROUP BY DP.EnglishProductName
+      ORDER BY DP.EnglishProductName;
+  Expectation: SetsMatch
